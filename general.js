@@ -2,7 +2,7 @@ const template= document.createElement("template");
 template.innerHTML=`
 <figure>
   <img src='' alt=''>
-  <figcaption class='figcap'>
+  <figcaption>
   </figcaption>
 </figure>
 `;
@@ -30,14 +30,17 @@ class ImgFigure extends HTMLElement {
     this.shadowRoot.appendChild(img);
   }
    attributeChangedCallback(name, oldValue, newValue){
-    if(name==="figcap"){
-      this.shadowRoot.querySelector("figcaption").innerHTML=newValue;
-    }
-    if(name==="imgsrc"){
-      this.shadowRoot.querySelector("img").setAttribute("src",newValue);
-    }
-    if(name==="altimg"){
-      this.shadowRoot.querySelector("img").setAttribute("alt",newValue);
+    let element= this.shadowRoot;
+    switch (name) {
+      case "figcap":
+        element.querySelector("figcaption").innerHTML=newValue;
+      break;
+      case "imgsrc":
+        element.querySelector("img").setAttribute("src",newValue);
+      break;
+      case "altimg":
+        element.querySelector("img").setAttribute("alt",newValue);
+      break;
     }
   }
   static get observedAttributes(){
