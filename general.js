@@ -1,3 +1,4 @@
+/* C */
 const template= document.createElement("template");
 template.innerHTML=`
 <figure>
@@ -6,6 +7,7 @@ template.innerHTML=`
   </figcaption>
 </figure>
 `;
+/* E */
 class ImgFigure extends HTMLElement {
   constructor(){
     super();
@@ -27,7 +29,6 @@ class ImgFigure extends HTMLElement {
     }
     `;
     this.shadowRoot.insertBefore(style, this.shadowRoot.children[0]);
-    this.shadowRoot.appendChild(img);
   }
    attributeChangedCallback(name, oldValue, newValue){
     let element= this.shadowRoot;
@@ -47,4 +48,5 @@ class ImgFigure extends HTMLElement {
     return ['figcap','imgsrc','altimg'];
   }
 }
+/* D */
 window.customElements.define('img-figure',ImgFigure);
