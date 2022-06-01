@@ -1,1 +1,1 @@
-# web-component-figure
+# Web Component Figure
